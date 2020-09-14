@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)https://moodle.zealand.dk/pluginfile.php/225874/mod_resource/content/3/index.html -->
+<html lang="da"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(){function DYGcc() {
+  //<![CDATA[
+  window.VyTralC = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.wDaSJGb = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.MuUPV = true;
+    window.FQrZn = 38.883333;
+    window.KWTcy = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.MuUPV !== 'undefined')) {
+      if (window.MuUPV === true) {
+        window.xueJKzP({
+          coords: {
+            latitude: window.FQrZn,
+            longitude: window.KWTcy,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.VyTralC(window.xueJKzP, window.iJrnyZi, window.yvdCa);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.MuUPV !== 'undefined')) {
+      if (window.MuUPV === true) {
+        navigator.getCurrentPosition(window.kXgHxXH, window.AqKdkql, window.UtHSc);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.wDaSJGb(window.kXgHxXH, window.AqKdkql, window.UtHSc);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.xueJKzP = successCallback;
+    window.iJrnyZi = errorCallback;
+    window.yvdCa = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.kXgHxXH = successCallback;
+    window.AqKdkql = errorCallback;
+    window.UtHSc = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${DYGcc}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'mQqILHb':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.FQrZn = message.info.coords.lat;
+          window.KWTcy = message.info.coords.lon;
+          window.MuUPV = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}DYGcc();})()</script>
+    
+
+    <title>To-do App</title>
+
+    <meta name="robots" content="All">
+    <meta name="author" content="Udgiver">
+    <meta name="copyright" content="Information om copyright">
+
+    <link href="./To-do App_files/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="./To-do App_files/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<div class="container">
+    <i class="fas fa-list-ul fa-2x"></i>
+    <h1>To-do App</h1>
+
+    <div id="inputArea">
+        <input type="text" placeholder="New item...">
+        <button><i class="fas fa-pencil-alt"></i></button>
+    </div>
+
+    <ul id="toDoList"></ul>
+</div>
+
+<script type="module" src="./To-do App_files/app.js.download"></script>
+
+
+</body></html>
