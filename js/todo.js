@@ -1,3 +1,7 @@
+import LocalStorage from "./localStorage.js";
+
+const localStorage = new LocalStorage();
+
 export default class Todo{
     constructor() {
         this.enterButton = document.querySelector('#inputArea button');
