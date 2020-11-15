@@ -36,18 +36,23 @@ export default class Todo{
 
     crossOut(e){
         e.currentTarget.classList.toggle('done');
+        localStorage.updateItems(this.ul);
     }
 
     deleteListItem(e){
         e.stopPropagation();
         const listItem = e.currentTarget.parentNode;
         listItem.remove();
+        localStorage.updateItems(this.ul);
     }
 
     loadFromLocalStorage(){
         let listItems = '';
         localStorage.items.forEach(item => listItems += item);
         this.ul.innerHTML = listItems;
-
+        this.ul.querySelectorAll('li').forEach(li => {
+            li.addEventListener('click', (e) => this.crossOut(e));
+            li.querySelector('i').addEventListener('click', (e) => this.deleteListItem(e));
+        });
     }
 }
