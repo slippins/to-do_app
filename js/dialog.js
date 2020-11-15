@@ -1,6 +1,11 @@
 export default class Dialog{
 
-    constructor() {
+    constructor({questionText, trueButtonText, falseButtonText}) {
+        this.questionText = questionText || "Er du sikker?";
+        this.trueButtonText = trueButtonText || "Ja";
+        this.falseButtonText = falseButtonText || "Nej";
+
+
         this.dialog = undefined;
         this.trueButton = undefined;
         this.falseButton = undefined;
@@ -26,10 +31,10 @@ export default class Dialog{
     createDialog(){
         this.dialog = document.createElement('dialog');
         this.dialog.innerHTML = `
-            <div class="dialog-question">Er du sikker?</div> 
+            <div class="dialog-question">${this.questionText}</div> 
             <div class="dialog-button-group">
-                <button class="dialog-button--false">Nej</button>
-                <button class="dialog-button--true">ja</button>
+                <button class="dialog-button--false">${this.falseButtonText}</button>
+                <button class="dialog-button--true">${this.trueButtonText}</button>
             </div>
         `;
         this.trueButton = this.dialog.querySelector('.dialog-button--true');
