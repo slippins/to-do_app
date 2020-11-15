@@ -40,14 +40,16 @@ export default class Todo{
         localStorage.updateItems(this.ul);
     }
 
-    deleteListItem(e){
+    async deleteListItem(e){
         e.stopPropagation();
         const listItem = e.currentTarget.parentNode;
         const dialog = new Dialog();
-        dialog.confirm();
 
-        listItem.remove();
-        localStorage.updateItems(this.ul);
+        const deleteItem = await dialog.confirm();
+        if(deleteItem){
+            listItem.remove();
+            localStorage.updateItems(this.ul);
+        }
     }
 
     loadFromLocalStorage(){
