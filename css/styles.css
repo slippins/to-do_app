@@ -100,3 +100,35 @@ li i:hover{
 .delete {
     display: none;
 }
+
+dialog{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    max-width: 500px;
+    border: none;
+    border-radius: 5px;
+}
+
+.dialog-button-group button{
+    color: var(--white);
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.dialog-button-group button:focus{
+    outline-color: var(--highlight);
+}
+
+.dialog-button--false{
+    background: var(--primary);
+}
+
+.dialog-button--true{
+    background: var(--secondary);
+}
+
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.6);
+}
