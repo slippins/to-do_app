@@ -35,6 +35,12 @@ export default class Dialog{
         this.trueButton = this.dialog.querySelector('.dialog-button--true');
         this.falseButton = this.dialog.querySelector('.dialog-button--false');
 
+        this.dialog.addEventListener('click', (e) => {
+            if (e.target === this.dialog){
+                this.destroy();
+            }
+        });
+
         document.body.appendChild(this.dialog);
     }
 
