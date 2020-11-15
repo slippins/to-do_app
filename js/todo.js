@@ -44,6 +44,7 @@ export default class Todo{
         e.stopPropagation();
         const listItem = e.currentTarget.parentNode;
         const dialog = new Dialog();
+        dialog.confirm();
 
         listItem.remove();
         localStorage.updateItems(this.ul);
