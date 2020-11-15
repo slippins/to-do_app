@@ -9,7 +9,18 @@ export default class Dialog{
     }
 
     confirm(){
+        return new Promise((resolve) => {
+            this.dialog.showModal();
 
+            this.trueButton.addEventListener('click', () => {
+                resolve(true);
+                this.destroy();
+            });
+            this.falseButton.addEventListener('click', () => {
+                resolve(false);
+                this.destroy();
+            })
+        });
     }
 
     createDialog(){
