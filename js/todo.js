@@ -1,4 +1,5 @@
 import LocalStorage from "./localStorage.js";
+import Dialog from "./dialog.js";
 
 const localStorage = new LocalStorage();
 
@@ -42,6 +43,8 @@ export default class Todo{
     deleteListItem(e){
         e.stopPropagation();
         const listItem = e.currentTarget.parentNode;
+        const dialog = new Dialog();
+
         listItem.remove();
         localStorage.updateItems(this.ul);
     }
