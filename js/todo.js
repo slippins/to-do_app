@@ -1,5 +1,5 @@
-import LocalStorage from "./localStorage.js";
-import Dialog from "./dialog.js";
+import LocalStorage from "./localStorage.min.js";
+import Dialog from "./dialog.min.js";
 
 const localStorage = new LocalStorage();
 

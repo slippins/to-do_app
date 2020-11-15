@@ -27,5 +27,8 @@
     "not IE 11",
     "not IE_Mob 11",
     "maintained node versions"
-  ]
+  ],
+  "dependencies": {
+    "postcss": "^8.1.7"
+  }
 }

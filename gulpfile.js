@@ -28,7 +28,6 @@ function javascript() {
             }))
             .pipe(sourcemaps.write("."))
             .pipe(gulp.dest("js"))
-
     );
 }
 

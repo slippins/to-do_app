@@ -26,38 +26,34 @@ body {
   margin:0 auto;
 }
 
-#inputArea{
+#inputArea {
   display: flex;
-}
-
-#inputArea input {
-  flex: 1 1 auto;
-  width: 100%;
-  border-radius: 5px;
-  padding: 15px;
-  border: none;
-}
-
-#inputArea input:focus {
-  outline-color: var(--highlight);
-  outline-offset: -2px;
-}
-
-#inputArea button {
-  flex: 0 1 50px;
-  cursor: pointer;
-  border: none;
-  padding: 15px 15px;
-  border-radius: 5px;
-  color: var(--white);
-  background-color: #025F70;
-  transition: all 0.2s ease;
-  margin-left: 5px;
-}
-
-#inputArea button:hover{
-  background-color: var(--primary-dark);
-  color: var(--highlight);
+  input {
+    flex: 1 1 auto;
+    width: 100%;
+    border-radius: 5px;
+    padding: 15px;
+    border: none;
+    &:focus {
+      outline-color: var(--highlight);
+      outline-offset: -2px;
+    }
+  }
+  button {
+    flex: 0 1 50px;
+    cursor: pointer;
+    border: none;
+    padding: 15px 15px;
+    border-radius: 5px;
+    color: var(--white);
+    background-color: #025F70;
+    transition: all 0.2s ease;
+    margin-left: 5px;
+    &:hover {
+      background-color: var(--primary-dark);
+      color: var(--highlight);
+    }
+  }
 }
 
 ul{
@@ -81,15 +77,15 @@ li {
   margin-bottom: 10px;
   background: var(--secondary);
   transition: all 0.75s ease;
-}
+  &:hover {
+    background: var(--secondary-dark);
+  }
 
-li:hover {
-  background: var(--secondary-dark);
-}
+  i:hover {
+      transition: all 0.2s ease;
+      color: var(--highlight);
+  }
 
-li i:hover{
-  transition: all 0.2s ease;
-  color: var(--highlight);
 }
 
 .done {
@@ -101,24 +97,28 @@ li i:hover{
   display: none;
 }
 
-dialog{
+dialog {
   display: flex;
   flex-direction: column;
   width: calc(100% - 20px);
   max-width: 500px;
   border: none;
   border-radius: 5px;
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
 }
 
-.dialog-button-group button{
-  color: var(--white);
-  border: none;
-  padding: 10px 30px;
-  border-radius: 5px;
-}
-
-.dialog-button-group button:focus{
-  outline-color: var(--highlight);
+.dialog-button-group {
+  button {
+    color: var(--white);
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    &:focus {
+      outline-color: var(--highlight);
+    }
+  }
 }
 
 .dialog-button--false{
@@ -127,8 +127,4 @@ dialog{
 
 .dialog-button--true{
   background: var(--secondary);
-}
-
-dialog::backdrop{
-  background-color: rgba(0, 0, 0, 0.6);
 }
