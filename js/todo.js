@@ -8,6 +8,10 @@ export default class Todo{
         this.input = document.querySelector('#inputArea input');
         this.ul= document.querySelector('ul#toDoList');
 
+        if(localStorage.items.length > 0){
+            this.loadFromLocalStorage();
+        }
+
         this.enterButton.addEventListener('click', (e) => this.addListItem(e));
         this.input.addEventListener('keypress', (e) => this.addListItem(e));
     }
@@ -26,6 +30,8 @@ export default class Todo{
 
         li.addEventListener('click', (e) => this.crossOut(e));
         li.querySelector('i').addEventListener('click', (e) => this.deleteListItem(e));
+
+        localStorage.updateItems(this.ul);
     }
 
     crossOut(e){
@@ -36,5 +42,12 @@ export default class Todo{
         e.stopPropagation();
         const listItem = e.currentTarget.parentNode;
         listItem.remove();
+    }
+
+    loadFromLocalStorage(){
+        let listItems = '';
+        localStorage.items.forEach(item => listItems += item);
+        this.ul.innerHTML = listItems;
+
     }
 }
