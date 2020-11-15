@@ -39,8 +39,8 @@ export default class Dialog{
     }
 
     destroy(){
-
-
+        document.body.removeChild(this.dialog);
+        delete this;
     }
 
 }
